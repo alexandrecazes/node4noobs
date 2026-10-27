@@ -12,6 +12,7 @@
     - [Async/Await](/asynchronous/async-await/)
     - [Promises](/asynchronous/promises/)
 - [Authentication](/authentication/)
+    - [Middleware](/authentication/middleware/)
 - [Basic](/basic/)
 - [Build](/build/)
     - [Express](/build/express/)
