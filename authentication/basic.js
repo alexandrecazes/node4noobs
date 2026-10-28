@@ -14,7 +14,7 @@ const users = [
     }
 ];
 
-app.get('/api/data', basicAuth, (req, res) => {
+app.get('/api/data', basicAuth(users), (req, res) => {
     res.json({
         message: 'Data accessed',
         user: req.user.username,

@@ -31,7 +31,7 @@ const authenticateJWT = (req, res, next) => {
 }
 
 // for basic authentication
-const basicAuth = (req, res, next) => {
+const basicAuth = (users) => (req, res, next) => {
     const authHeader = req.headers.authorization;
     
     // if no credentials provided, request authentication
