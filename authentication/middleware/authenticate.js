@@ -35,7 +35,7 @@ const basicAuth = (req, res, next) => {
     const authHeader = req.headers.authorization;
     
     // if no credentials provided, request authentication
-    if (!authHeader || !authHeader.startWith('Basic ')) {
+    if (!authHeader || !authHeader.startsWith('Basic ')) {
         res.setHeader('WWW-Authenticate', 'Basic realm="API Authentication"');
         return res.status(401).json({ message: 'OPS! Authentication required' });
     }
