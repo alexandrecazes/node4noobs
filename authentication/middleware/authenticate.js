@@ -58,4 +58,12 @@ const basicAuth = (users) => (req, res, next) => {
     next()
 }
 
-module.exports = { authenticateJWT, basicAuth };
+// for OAuth authentication
+const isAuthenticated = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
+}
+
+module.exports = { authenticateJWT, basicAuth, isAuthenticated };
