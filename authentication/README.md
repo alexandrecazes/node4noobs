@@ -38,3 +38,14 @@
 ## Basic Authentication
 
 *HTTP Basic authentication uses encoded credentials in the Authorization header.*
+
+## OAuth 2.0 Authentication
+
+*OAuth 2.0 is the industry-standard protocol for authorization, enabling applications to obtain limited access to user accounts on HTTP services, delegating user authentication to the service that hosts the user account.*
+
+- User clicks "Login with [Provider: eg. google.com or github.com]" in your app
+- User is redirected to the provider's login page
+- User authenticates and authorizes your app
+- Provider redirects back to your app with an authorization code
+- Your app exchanges the code for an access token
+- Your app can now access the user's data (within the authorized scope)
