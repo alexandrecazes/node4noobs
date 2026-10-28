@@ -41,7 +41,7 @@ const basicAuth = (req, res, next) => {
     }
 
     // extract and decode credentials
-    const encodedCredentials = authHeader.split(':');
+    const encodedCredentials = authHeader.split(' ')[1];
     const decodedCredentials = Buffer.from(encodedCredentials, 'base64').toString('utf-8');
     const [username, password] = decodedCredentials.split(':');
 
