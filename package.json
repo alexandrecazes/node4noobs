@@ -8,6 +8,8 @@
     "mongodb": "^7.6.0",
     "mongoose": "^9.10.0",
     "mysql2": "^3.24.4",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
     "supertest": "^7.3.1"
   },
   "devDependencies": {
