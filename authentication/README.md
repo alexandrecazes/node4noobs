@@ -49,3 +49,15 @@
 - Provider redirects back to your app with an authorization code
 - Your app exchanges the code for an access token
 - Your app can now access the user's data (within the authorized scope)
+
+## API Key Authentication
+
+*API keys are a simple way to authenticate clients to your API.
+They're best suited for server-to-server communication or when you need to identify the calling project without user context.*
+
+### Best Practices for API Keys:
+
+- Store keys securely (environment variables, secret management services)
+- Rotate keys regularly
+- Use HTTPS to prevent key exposure
+- Implement rate limiting per key
