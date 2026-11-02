@@ -66,4 +66,21 @@ const isAuthenticated = (req, res, next) => {
     res.redirect('/login');
 }
 
-module.exports = { authenticateJWT, basicAuth, isAuthenticated };
+// for API key authentication 
+const authenticateApiKey = (apiKeys) => (req, res, next) => {
+    const apiKey = req.headers['x-api-key'] || req.query.apiKey;
+
+    if (!apikey) 
+        return res.status(401).json({ error: 'OPS! API key is required' });
+    
+    const keyData = apiKeys.get(apiKey);
+
+    if (!keyData)
+        return res.status(403).json({ error: 'OPS! Invalid API key' });
+
+    // attach key data to request for use in route handlers
+    req.apiKeyData = keyData;
+    next();
+}
+
+module.exports = { authenticateJWT, basicAuth, isAuthenticated, authenticateApiKey };
