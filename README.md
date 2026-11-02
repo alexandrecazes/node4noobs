@@ -13,6 +13,7 @@
     - [Promises](/asynchronous/promises/)
 - [Authentication](/authentication/)
     - [Middleware](/authentication/middleware/)
+    - [Services](/authentication/services/)
 - [Basic](/basic/)
 - [Build](/build/)
     - [Express](/build/express/)
