@@ -61,3 +61,6 @@ They're best suited for server-to-server communication or when you need to ident
 - Rotate keys regularly
 - Use HTTPS to prevent key exposure
 - Implement rate limiting per key
+
+## Multi-Factor Authentication (MFA)
+*An extra layer of security with time-based one-time passwords (TOTP)*
