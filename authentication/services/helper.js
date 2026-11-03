@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -21,4 +22,11 @@ function generateApiKey() {
         .join('');
 }
 
-module.exports = { generateTokenJWT, generateApiKey }
+const salt = 16;
+
+// to generate hash password 
+async function hashPassword(password) {
+    return await bcrypt.hash(password, salt);
+}
+
+module.exports = { generateTokenJWT, generateApiKey, hashPassword }
