@@ -27,7 +27,7 @@ app.post('/register', (req, res) => {
     const { username, password } = req.body;
     const user = users.find(u => u.username === username);
 
-    if (!user)
+    if (user)
         return res.status(400).json({ message: 'OPS! Username already exists' });
 
     const secret = speakeasy.generateSecret({ name: `MfaApp:${username}` });
@@ -106,9 +106,8 @@ app.post('/login', (req, res) => {
         });
     }
 
-    const token = generateTokenJWT();
-    res.json({ 
-        message: 'WINS! Login successful', token });
+    const token = generateTokenJWT(user);
+    res.json({ message: 'WINS! Login successful', token });
 });
 
 /**
@@ -118,7 +117,7 @@ app.post('/login', (req, res) => {
  * Generate JWT token
  *
  */
-app.post('verify-login', (req, res) => {
+app.post('/verify-login', (req, res) => {
     const { userId, mfaToken } = req.body;
     const user = users.find(u => u.id === userId);
 
@@ -134,11 +133,11 @@ app.post('verify-login', (req, res) => {
     if (!verified)
         return res.status(401).json({ message: 'OPS! Invalid MFA token' });
 
-    const token = generateTokenJWT();
+    const token = generateTokenJWT(user);
     res.json({ message: 'WINS! Login successful', token });
 });
 
-const port = process.env.PORt || 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
