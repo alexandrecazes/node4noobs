@@ -64,3 +64,38 @@ They're best suited for server-to-server communication or when you need to ident
 
 ## Multi-Factor Authentication (MFA)
 *An extra layer of security with time-based one-time passwords (TOTP)*
+
+## Security Best Practices
+
+*Security is not optional when implementing authentication. Follow these best practices to protect your application and users.*
+
+### Password Security
+- Never store plain text passwords
+- Enforce strong passwords 
+- Implement password rotation 
+
+### Token Security
+- Use short-lived access tokens 
+- Implement refresh tokens 
+- Store tokens securely 
+
+### OAuth 2.0 Security
+- Use PKCE 
+- Validate redirect URIs
+- Store client secrets securely
+
+### General Security
+- Always use HTTPS 
+- Implement rate limiting 
+- Use security headers 
+- Log and monitor 
+
+#### API authentication - Security best practices:
+- HTTPS Only: Always use HTTPS to encrypt data in transit
+- Password Hashing: Store only hashed passwords using bcrypt or Argon2
+- Token Management: Keep tokens short-lived and implement refresh tokens
+- Rate Limiting: Protect against brute force attacks
+- Input Validation: Validate all user inputs to prevent injection attacks
+- CORS Configuration: Restrict cross-origin requests appropriately
+- Secure Headers: Implement security headers like HSTS and CSP
+- Audit Logging: Log authentication events for security monitoring
