@@ -79,7 +79,7 @@ const authenticateApiKey = (apiKeys) => (req, res, next) => {
         return res.status(403).json({ error: 'OPS! Invalid API key' });
 
     // attach key data to request for use in route handlers
-    req.apiKeyData = keyData;
+    req.apiKey = keyData;
     next();
 }
 
