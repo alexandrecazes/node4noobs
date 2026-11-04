@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 
 dotenv.config();
-
 const JWT_SECRET = process.env.JWT_SECRET;
+const tokenBlacklist = new Set();
 
 // for JWT verification
 const authenticateJWT = (req, res, next) => {
@@ -23,6 +23,26 @@ const authenticateJWT = (req, res, next) => {
         // verify token
         const decoded = jwt.verify(token, JWT_SECRET);
 
+        req.user = decoded;
+        next();
+    } catch (error) {
+        return res.status(403).json({ message: 'OPS! Invalid or expired token' });
+    }
+}
+
+const authenticateJWT2 = (user) => (req, res, next) => {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) 
+        return res.status(401).json({ message: 'OPS! Authorization header required' });
+
+    const token = authHeader.split(' ')[1];
+
+    if (tokenBlacklist.has(token))
+        return res.status(403).json({ message: 'OPS! Token revoked' });
+
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
         req.user = decoded;
         next();
     } catch (error) {
@@ -83,4 +103,10 @@ const authenticateApiKey = (apiKeys) => (req, res, next) => {
     next();
 }
 
-module.exports = { authenticateJWT, basicAuth, isAuthenticated, authenticateApiKey };
+module.exports = { 
+    authenticateJWT, 
+    authenticateJWT2, 
+    basicAuth, 
+    isAuthenticated, 
+    authenticateApiKey 
+};
