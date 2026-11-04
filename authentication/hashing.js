@@ -1,11 +1,12 @@
 const bcrypt = require('bcrypt');
 const express = require('express');
-const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
 dotenv.config();
 const app = express();
-app.use(bodyParser.json());
+
+app.use(express.json());                    
+app.use(express.urlencoded({ extended: true }));
 
 // in-memory database to test
 const users = [];
