@@ -99,3 +99,39 @@ They're best suited for server-to-server communication or when you need to ident
 - CORS Configuration: Restrict cross-origin requests appropriately
 - Secure Headers: Implement security headers like HSTS and CSP
 - Audit Logging: Log authentication events for security monitoring
+
+## HTTP Headers for Authentication
+
+*When implementing API authentication, the HTTP headers used are crucial:*
+
+- Authorization header: This is the standard HTTP header used for sending authentication tokens in most API authentication strategies including JWT, OAuth, and Basic Auth
+- Common format: Authorization: Bearer <token> for JWT and OAuth 2.0
+- Format for Basic Auth: Authorization: Basic <base64-encoded-credentials>
+
+### Authentication Strategies for Different API Types
+
+| API Type	| Recommended 	| Considerations 
+| -------- | ------- | ------- |
+| Public  | API Keys | Simple to implement, good for tracking usage |
+| Service-to-Service | JWT (stateless) or Mutual TLS | Minimal overhead, high security |
+| Mobile/Web | OAuth 2.0 + JWT | Good user experience, handles third-party auth |
+| Single-Page Application| JWT with refresh tokens | Works well with front-end frameworks |
+| IoT Device | Client certificates or API keys | Handles limited device capabilities |
+
+## Conclusion
+
+*Essential authentication methods for Node.js APIs. Quick recap of what we've covered:*
+
+### Authentication Methods
+
+- Session-based - Traditional approach using server-side sessions
+- JWT Tokens - Stateless tokens for distributed systems
+- OAuth 2.0 - Industry standard for third-party authentication
+- API Keys - Simple authentication for server-to-server communication
+
+### Security Essentials
+- Always use HTTPS
+- Hash passwords with bcrypt/Argon2
+- Use short-lived tokens
+- Implement rate limiting
+
