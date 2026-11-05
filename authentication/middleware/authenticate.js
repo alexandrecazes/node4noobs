@@ -30,7 +30,7 @@ const authenticateJWT = (req, res, next) => {
     }
 }
 
-const authenticateJWT2 = (user) => (req, res, next) => {
+const authenticateJWT2 = (req, res, next) => {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) 
