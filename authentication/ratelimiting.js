@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const rateLimit = require('express-rate-limit');
 const dotenv = require('dotenv');
 
+const { authenticateJWT2 } = require('./middleware/authenticate');
+
 dotenv.config();
 const app = express();
 
@@ -106,6 +108,35 @@ app.post('/refresh', (req, res) =>{
         refreshTokens.delete(refreshToken);
         return res.status(403).json({ message: 'OPS! Invalid or expired refrsh token' });     
     }
+});
+
+/**
+ * Logout route (protected)
+ * Blacklist the current access token
+ * Remove refresh token if provided
+ * 
+ */
+app.post('/logout', authenticateJWT2, (req, res) => {
+    const authHeader = req.headers.authorization;
+    const token = authHeader.split(' ')[1];
+    const { refreshToken } = req.body;
+    tokenBlacklist.add(token);
+
+    if (refreshToken)
+        refreshTokens.delete(refreshToken);
+
+    res.json({ message: 'WINS! Logout successful' });
+});
+
+/**
+ * Home route (protected)
+ * 
+ */
+app.get('/home', authenticateJWT2, (req, res) => {
+    res.json({
+        message: 'WINS! Home resource accessed',
+        user: req.user
+    });
 });
 
 const port = process.env.PORT || 3000;
