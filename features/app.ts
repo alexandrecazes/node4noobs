@@ -12,15 +12,17 @@ app.use(express.json());
 let users: User[] = [];
 
 app.get('/', (req: Request, res: Response) => {
-    console.log("GET /")
-    //res.json(users);
+    res.json(users);
 });
 
 app.post('/users', (req: Request, res: Response) => {
-    console.log("POST /users");
-    /*const user: User = req.body;
+    const user: User = req.body;
     users.push(user);
-    res.status(201).json(user);*/
+    res.status(201).json({
+        message: 'POST /users',
+        id: user.id,
+        name: user.name
+    });
 });
 
 const port = process.env.PORT || 5000;
