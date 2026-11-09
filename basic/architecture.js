@@ -29,7 +29,9 @@ console.log("**********************************************\n");
 console.log("Starting...");
 fs.readFile(file, 'utf-8', (error, data) => {
     if (error) 
-        throw error;
+        console.error(`OPS! ${error.message}`);
+        return;
+        
     console.log(`Message: ${data}`);
 });
 console.log("Waiting...");
