@@ -22,6 +22,7 @@
 - [Database](/database/)
     - [MongoDB](/database/mongodb/)
     - [MySQL](/database/mysql/)
+- [Debugging](/debugging/)
 - [Features](/features/)
 - [Modules](/modules/)
     - [CommonJS](/modules/common-js/)
