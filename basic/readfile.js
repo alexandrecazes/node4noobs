@@ -1,11 +1,14 @@
 const fs = require('fs');
+const path = require('path');
 
-fs.readFile('./src/basic/readfile.txt', 'utf-8', (error, data) => {
+const file = path.join(__dirname, 'readfile.txt');
+
+fs.readFile(file, 'utf-8', (error, data) => {
     if (error) {
         console.error("OPS! Error reading file", error);
         return;
     }
-    console.log("File: ", data);
+    console.log(`Message: ${data}`);
 });
 
 console.log("Reading file...");

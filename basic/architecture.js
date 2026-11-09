@@ -1,5 +1,6 @@
 const { error } = require('console');
 const fs = require('fs');
+const path = require('path');
 
 /**
  * Node.js uses a single-threaded, event-driven architecture that is designed to handle many 
@@ -7,23 +8,28 @@ const fs = require('fs');
  * 
  * Key Characteristics: 
  * Non-blocking I/O, event-driven, single-threaded with event loop, asynchronous execution.
+ * 
+ * Blocking vs Non-blocking Code
+ * 
  */
 
-// Blocking vs Non-blocking Code
+
+const file = path.join(__dirname, 'readfile.txt');
 
 // Blocking
 console.log("Starting...");
-const data = fs.readFileSync('./src/basic/readfile.txt', 'utf-8');
-console.log("Message:", data);
+//console.log(file);
+const data = fs.readFileSync(file, 'utf-8');
+console.log(`Message: ${data}`);
 console.log("Operation completed.\n");
 
 console.log("**********************************************\n");
 
 // Non-blocking
 console.log("Starting...");
-fs.readFile('./src/basic/readfile.txt', 'utf-8', (error, data) => {
+fs.readFile(file, 'utf-8', (error, data) => {
     if (error) 
         throw error;
-    console.log("Message:", data);
+    console.log(`Message: ${data}`);
 });
 console.log("Waiting...");
