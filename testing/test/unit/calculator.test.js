@@ -1,6 +1,6 @@
 const { describe, test } = require('node:test');
 const assert = require('assert');
-const { sum, subtract, mult, div } = require('../calculator');
+const { sum, subtract, mult, div } = require('../../calculator');
 
 describe('Sum', () => {
     test('should sum two numbers', () => {
