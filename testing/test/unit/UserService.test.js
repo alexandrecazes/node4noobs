@@ -1,6 +1,6 @@
 const { describe, test } = require('node:test');
 const assert = require('assert');
-const UserService = require('../UserService');
+const UserService = require('../../UserService');
 
 /**
  * Create a mock database to test

@@ -1,6 +1,6 @@
 const { describe, test } = require('node:test');
 const assert = require('assert');
-const AsyncService = require('../AsyncService');
+const AsyncService = require('../../AsyncService');
 
 /**
  * Test fetchData()

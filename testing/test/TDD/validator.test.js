@@ -1,6 +1,6 @@
 const { describe, test } = require('node:test');
 const assert = require('assert');
-const validatorPassword = require('../validator');
+const validatorPassword = require('../../validator');
 
 describe('test for password length', () => {
     test('should reject password shorter than 8 characters', () => {
