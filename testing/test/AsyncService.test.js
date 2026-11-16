@@ -6,7 +6,6 @@ const AsyncService = require('../AsyncService');
  * Test fetchData()
  * 
  * Test processData()
- * 
  */
 async function testAsyncService() {
    const service = new AsyncService();
@@ -23,7 +22,9 @@ async function testAsyncService() {
    });
 
    describe('test processData', () => {
-        assert.deepStrictEqual(processResult, [166, 24, 50], true);        
+        test('should double each value in the array', () => {
+            assert.deepStrictEqual(processResult, [166, 24, 50], true);
+        })
    });
 }
 
